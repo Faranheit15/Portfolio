@@ -87,6 +87,11 @@ footer i {
     flex-wrap: wrap;
 }
 
+.social-image {
+    height: 1.5rem;
+    width: auto;
+}
+
 .contact-details {
     font-size: 1rem;
     text-shadow: 2px 2px 1px #1f1f1f;
