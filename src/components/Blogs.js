@@ -1,5 +1,5 @@
 import React from 'react';
-import { BadgeCheckIcon, ChipIcon } from "@heroicons/react/solid";
+import { ChipIcon } from "@heroicons/react/solid";
 
 export default function Blogs() {
     return(
