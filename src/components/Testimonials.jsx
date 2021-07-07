@@ -10,6 +10,9 @@ export default function Testimonials() {
         <h1 className="sm:text-4xl text-3xl font-medium title-font text-white mb-12">
           Shoutouts
         </h1>
+        <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
+          Many of my friends are content creators. Here is a big shoutout to each and every one of them. Make sure to check their channel/page.
+        </p>
         <div className="flex flex-wrap m-4">
           {testimonials.map((testimonial) => (
             <a href={testimonial.link}
