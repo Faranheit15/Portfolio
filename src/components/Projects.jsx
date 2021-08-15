@@ -40,7 +40,7 @@ export default function Projects() {
             </a>
           ))}
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            <a href="https://faranheit.netlify.app/">Feel free to check my old minor projects here!🚀</a>
+            <a href="https://faranheit.netlify.app/">Feel free to check my old minor projects here!<span role="img" aria-label="Rocket">🚀</span></a>
           </p>
         </div>
       </div>
