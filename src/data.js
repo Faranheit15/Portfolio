@@ -50,6 +50,13 @@ export const testimonials = [{
         link: "https://www.youtube.com/user/SyedWafiHasan",
     },
     {
+        quote: "A procrastinating photographer capturing Portraits x Landscape 🇮🇳",
+        image: "https://media-exp1.licdn.com/dms/image/C4E03AQHjFMWkwI8GVQ/profile-displayphoto-shrink_800_800/0/1627553793666?e=1634774400&v=beta&t=KopFADY4vghVdLf9--iTcMbEdX78qy4zD36GuOymkJg",
+        name: "Shivam",
+        company: "Earth Archive",
+        link: "https://www.instagram.com/eartharchive/",
+    },
+    {
         quote: "Just doing my part in making someone smile through my YouTube videos.",
         image: "https://yt3.ggpht.com/ytc/AKedOLT2jFu2hVKmGt8b0vEkn-s5Z0bEYF1fl0_ANNkl=s88-c-k-c0x00ffffff-no-rj",
         name: "Sakshi Panday",
@@ -123,4 +130,37 @@ export const skills = [
     "Node",
     "Flutter",
     "HTML | CSS | Bootstrap",
+];
+
+export const contacts = [
+    {
+        name: "LinkedIn",
+        link: "https://www.linkedin.com/in/faran-mohammad-7b938917a/",
+        image: "https://image.flaticon.com/icons/png/512/174/174857.png"
+    },
+    {
+        name: "GitHub",
+        link: "https://github.com/faranheit15",
+        image: "https://image.flaticon.com/icons/png/512/733/733553.png"
+    },
+    {
+        name: "Instagram",
+        link: "https://instagram.com/faran.codes",
+        image: "https://image.flaticon.com/icons/png/512/2111/2111463.png"
+    },
+    {
+        name: "Mail",
+        link: "mailto:ffaranm15@gmail.com",
+        image: "https://image.flaticon.com/icons/png/512/732/732200.png"
+    },
+    {
+        name: "Telegram",
+        link: "https://t.me/Faran_heit",
+        image: "https://image.flaticon.com/icons/png/512/2111/2111646.png"
+    },
+    {
+        name: "YouTube",
+        link: "https://www.youtube.com/channel/UCaLKJ5bnZIXlyX5aIyQmnVA/about",
+        image: "https://image.flaticon.com/icons/png/512/1384/1384060.png"
+    }
 ];
