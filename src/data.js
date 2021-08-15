@@ -6,6 +6,13 @@ export const projects = [{
         link: "https://konnect-3f625.web.app/",
     },
     {
+        title: "CoviDost",
+        subtitle: "Flutter | Covid-19 REST API",
+        description: "A mobile app that will allow users to track the stats of the Covid-19 spread in various regions and also get necessary information related to it.",
+        image: "https://www.coe.int/documents/21202288/62129062/languages-COVID-19_used+by+CoE+main+portal.jpg/b9882ed7-9e7b-caf8-c6e4-9cec0f125baa?t=1585837178000",
+        link: "https://github.com/Faranheit15/CoviDost",
+    },
+    {
         title: "Newsletter Sign-Up Page",
         subtitle: "Node.js | MailChimp API",
         description: "A newsletter  subscription web app for sending updates to your subscribers",

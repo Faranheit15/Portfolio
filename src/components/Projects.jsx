@@ -39,6 +39,9 @@ export default function Projects() {
               </div>
             </a>
           ))}
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+            <a href="https://faranheit.netlify.app/">Feel free to check my old minor projects here!🚀</a>
+          </p>
         </div>
       </div>
     </section>
