@@ -1,0 +1,57 @@
+.card {
+  border: 1px solid rgb(211, 210, 210);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: black;
+  width: 250px;
+  min-height: 250px;
+  max-height: 450px;
+  border-radius: 15px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.card-text {
+  padding: 10px;
+}
+
+.date {
+  color: rgb(255, 7, 110);
+}
+
+.ProjectName {
+  color: blue;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+.ProjectDescription {
+  color: rgb(34, 33, 33);
+  font-weight: 200;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+.type {
+  color: rgb(255, 7, 110);
+  font-size: 15px;
+}
+
+.card-link {
+  background-color: rgb(219, 193, 43);
+  text-align: center;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}

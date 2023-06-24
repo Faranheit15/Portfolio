@@ -1,0 +1,85 @@
+h1 {
+  margin-top: 80px;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+i:hover {
+  color: gold !important;
+  transform: scale(1.2);
+}
+
+i {
+  transition: 300ms;
+  width: 50px;
+  margin: 10px;
+}
+
+.name {
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+  font-size: 40px;
+}
+
+.description {
+  text-align: center;
+  color: rgb(10, 10, 10);
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+.about {
+  padding: 5px;
+  color: rgb(43, 41, 41);
+  text-align: center;
+  font-size: 23px;
+}
+
+.languages {
+  color: black;
+  margin: 10px;
+  font-size: 17px;
+}
+
+.btn {
+  display: flex;
+  padding: 5px 20px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: black;
+  background: transparent;
+  transition: 350ms;
+  border: 3px solid black;
+  margin: 10px 60px 50px 50px;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: rgba(255, 217, 0, 0.795);
+  transform: scale(1.1);
+  box-shadow: 6px 5px 5px black;
+}
+
+.social-container {
+  margin-bottom: 30px;
+}
+
+@media(max-width : 500px) {
+  .about{
+    padding: 10px;
+    font: 20px;
+  }
+  .social-container {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}

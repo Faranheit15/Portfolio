@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+}
+
+ul {
+    min-width: 400px;
+}
+
+li {
+    padding: 5px;
+    list-style: none;
+    font-size: 20px;
+    margin: 10px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+li:hover {
+    background-color: rgb(250, 250, 243);
+}
+
+@media (max-width : 500px) {
+
+    ul {
+        min-width: 300px;
+    }
+    li{
+        font-size: 18px;
+    }
+}

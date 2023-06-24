@@ -1,0 +1,18 @@
+.projects_list {
+    display: grid;
+    grid-template-columns: auto auto auto minmax(200px, 250px);
+    grid-gap: 25px;
+    padding: 10px;
+}
+
+@media (max-width:900px) {
+    .projects_list {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 700px) {
+    .projects_list {
+        grid-template-columns: auto;
+    }
+}
