@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
-import { NavLink } from 'react-router-dom';
-import Posts from './Posts';
+// import { NavLink } from 'react-router-dom';
+// import Posts from './Posts';
 import '../css/Blog.css';
 const pageTitle = 'Blog';
 
