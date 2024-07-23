@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Helmet from'react-helmet';
+import Helmet from 'react-helmet';
 import Project from './Project';
 import '../css/Projects.css';
 
@@ -14,6 +14,22 @@ export default function Projects() {
       <h1>Projects</h1>
       <div className="projects">
         <div className="projects_list">
+          <Project
+            name="Netflix-GPT"
+            description="A Netflix clone made in React with Tailwind CSS and Google's Firebase Authentication"
+            type="React | Firebase"
+            date="Feb 2024"
+            link="https://faranheit15.github.io/Netflix-GPT/"
+            linkText="Live"
+          />
+          <Project
+            name="Fwiggy"
+            description="A Swiggy clone made in React with Tailwind CSS. Added Redux for storing local authentication"
+            type="React | Swiggy API"
+            date="Jan 2024"
+            link="https://github.com/Faranheit15/namaste-react/tree/project/fwiggy"
+            linkText="GitHub"
+          />
           <Project
             name="Konnect"
             description="Konnect is a text-messaging app, made using ReactJS and Firebase, which follows the concept of chatrooms"
@@ -33,7 +49,7 @@ export default function Projects() {
           <Project
             name="Passweird"
             description="A React-Native based password generator app"
-            type="Mobile App | React Native"
+            type="React Native | Formik"
             date="March 2020"
             link="https://github.com/Faranheit15/Passweird"
             linkText="GitHub"

@@ -26,6 +26,11 @@ export default function Navbar() {
             Blog
           </Link>
         </div>
+        <div className="navigation-sub">
+          <Link to="/Resume" className="item">
+            Resume
+          </Link>
+        </div>
       </div>
     </React.Fragment>
   );

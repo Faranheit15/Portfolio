@@ -13,7 +13,7 @@ export default function Blog() {
       </Helmet>
       <div className="container">
         <h1 className="pageTitle">{pageTitle}</h1>
-        <ul className="blogList">
+        {/* <ul className="blogList">
           {[...Posts()].map((post) => {
             const url = post[0];
             const { title } = post[1];
@@ -30,7 +30,12 @@ export default function Blog() {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
+        <div className="btn">
+          <a href="https://faranheit.medium.com/">
+            <strong>Medium Profile</strong>
+          </a>
+        </div>
       </div>
     </Fragment>
   );

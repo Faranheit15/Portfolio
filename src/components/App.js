@@ -10,6 +10,7 @@ import Single from "./Single";
 import "../css/App.css";
 import Footer from "./Footer";
 import About from "./About";
+import Resume from "./Resume";
 
 const history = createBrowserHistory();
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/projects/" component={Projects} />
           <Route path="/blog/" component={Blog} />
           <Route path="/post/:title/" component={Single} />
+          <Route path="/resume/" component={Resume} />
           <Route component={NotFound} />
         </Switch>
       </div>
