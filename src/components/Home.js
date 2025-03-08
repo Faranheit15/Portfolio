@@ -4,30 +4,30 @@ import "../css/Home.css";
 
 export default function Home() {
   const pageTitle = "Hi, I'm Faran";
-  const pageContent = `I'm a self-taught Software Developer specialized in Frontend Development!`;
+  const pageContent = `I'm a self-taught Software Developer specialized in Fullstack Development!`;
   const socialStyle = {
     color: "black",
   };
   return (
     <React.Fragment>
       <Helmet>
-        <title>Faran Mohammad - Frontend Developer</title>
+        <title>Faran Mohammad - Fullstack Frontend Developer</title>
         <meta name="description" content="{pageContent}" />
       </Helmet>
       <h1 className="name">{pageTitle}</h1>
-      <p className="description">Developer | Open-source Enthusiast</p>
+      <p className="description">Developer| Designer | Open-source Enthusiast</p>
       <h4 className="about">{pageContent}</h4>
       <p className="languages">
-        Languages : Javascript | React | SQL | Python | Plotly
+        Languages : ReactJS | NextJS | FastAPI | NodeJS | Tailwind
       </p>
       <div className="btn">
         <a href="mailto:ffaranm15@gmail.com">
-          <strong>Hire me!</strong>
+          <strong>Say hello!</strong>
         </a>
       </div>
       <div className="social-container">
         <a
-          href="https://twitter.com/wheresmybiryani"
+          href="https://twitter.com/faaaaraaaan"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -11,12 +11,14 @@ import "../css/App.css";
 import Footer from "./Footer";
 import About from "./About";
 import Resume from "./Resume";
+import TopBar from "./TopBar";
 
 const history = createBrowserHistory();
 
 export default function App() {
   return (
     <Router history={history}>
+      <TopBar />
       <Navbar />
       <div className="App">
         <Switch>
