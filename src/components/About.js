@@ -11,7 +11,7 @@ export default function About() {
             Faran Mohammad is a self-taught developer specializing in Frontend
             Development.
           </p>
-          <p>
+          {/* <p>
             Developer and an open-source enthusiast currently employed at
             UsefulBi Corporation, India, as a Frontend Developer, where he is
             working on the UI design of most of their products and also
@@ -19,6 +19,11 @@ export default function About() {
             a dynamic development environment where he can learn new things
             everyday and contribute to something big. Currently, he is trying to
             gain a good knowledge of SQL, Python, Plotly and Databricks.
+          </p> */}
+          <p>
+            Developer and an open-source enthusiast currently employed as a Fullstack Frontend Developer, where he is
+            working on the UI design and API integration. He is actively learning and adapting to new technologies.
+            He is consuming FastAPI at a very fast pace, and reacting to React Native natively xD.
           </p>
           <p>
             He wants to help others like him and improve his other skills.
