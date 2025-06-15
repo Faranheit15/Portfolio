@@ -1,10 +1,9 @@
-
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import ThemeToggle from './ThemeToggle';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,35 +15,36 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Experience', href: '/experience' },
-    { name: 'Blogs', href: '/blogs' },
-    { name: 'Contact', href: '/contact' },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Experience", href: "/experience" },
+    { name: "Blogs", href: "/blogs" },
+    { name: "Contact", href: "/contact" },
+    { name: "Tools", href: "/tools" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav 
+    <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm" 
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
           : "bg-transparent"
       )}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="text-xl font-serif font-semibold text-primary hover:text-claude-accent transition-colors"
           >
             Faran Mohammad
@@ -58,13 +58,11 @@ const Navbar = () => {
                 to={item.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative group",
-                  isActive(item.href) 
-                    ? "text-primary" 
-                    : "text-muted-foreground"
+                  isActive(item.href) ? "text-primary" : "text-muted-foreground"
                 )}
               >
                 {item.name}
-                <span 
+                <span
                   className={cn(
                     "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
                     isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
@@ -77,7 +75,7 @@ const Navbar = () => {
           {/* Theme Toggle and CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Button 
+            <Button
               asChild
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
@@ -117,8 +115,8 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="px-4 pt-2">
-                <Button 
-                  asChild 
+                <Button
+                  asChild
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   <Link to="/contact">Get In Touch</Link>

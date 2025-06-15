@@ -1,9 +1,8 @@
-
-import { useState, useEffect } from 'react';
-import Layout from '@/components/Layout';
-import ExperienceItem from '@/components/ExperienceItem';
-import { Card, CardContent } from '@/components/ui/card';
-import experienceData from '@/data/experience.json';
+import { useState, useEffect } from "react";
+import Layout from "@/components/Layout";
+import ExperienceItem from "@/components/ExperienceItem";
+import { Card, CardContent } from "@/components/ui/card";
+import experienceData from "@/data/experience.json";
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,18 +12,20 @@ const Experience = () => {
   }, []);
 
   const totalYears = () => {
-    const startDate = new Date('2021-03-01');
+    const startDate = new Date("2021-03-01");
     const endDate = new Date();
-    const years = (endDate.getFullYear() - startDate.getFullYear()) + 
+    const years =
+      endDate.getFullYear() -
+      startDate.getFullYear() +
       (endDate.getMonth() - startDate.getMonth()) / 12;
     return Math.round(years * 10) / 10;
   };
 
   const stats = [
-    { label: 'Years of Experience', value: `${totalYears()}+` },
-    { label: 'Companies', value: '2' },
-    { label: 'Projects Delivered', value: '20+' },
-    { label: 'Performance Improvement', value: '50%' }
+    { label: "Years of Experience", value: `${totalYears()}+` },
+    { label: "Companies", value: "2" },
+    { label: "Projects Delivered", value: "20+" },
+    { label: "Performance Improvement", value: "50%" },
   ];
 
   return (
@@ -32,13 +33,19 @@ const Experience = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-background via-claude-cream to-claude-warm-gray">
         <div className="container-custom">
-          <div className={`text-center space-y-6 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div
+            className={`text-center space-y-6 transition-all duration-1000 ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
+          >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-primary">
               Experience
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              My professional journey through fullstack development, from enterprise 
-              applications to cutting-edge AI-powered solutions.
+              My professional journey through fullstack development, from
+              enterprise applications to cutting-edge AI-powered solutions.
             </p>
           </div>
         </div>
@@ -51,8 +58,12 @@ const Experience = () => {
             {stats.map((stat, index) => (
               <Card key={stat.label} className="text-center border-0 shadow-lg">
                 <CardContent className="p-6 space-y-2">
-                  <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-3xl font-bold text-primary">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -75,9 +86,9 @@ const Experience = () => {
 
             <div className="space-y-12">
               {experienceData.map((experience, index) => (
-                <ExperienceItem 
-                  key={experience.id} 
-                  experience={experience} 
+                <ExperienceItem
+                  key={experience.id}
+                  experience={experience}
                   index={index}
                 />
               ))}
@@ -102,10 +113,15 @@ const Experience = () => {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-8 text-center space-y-4">
-                  <div className="text-lg font-semibold text-primary">2021 - 2022</div>
-                  <h3 className="text-xl font-bold text-claude-accent">Foundation</h3>
+                  <div className="text-lg font-semibold text-primary">
+                    2021 - 2022
+                  </div>
+                  <h3 className="text-xl font-bold text-claude-accent">
+                    Foundation
+                  </h3>
                   <p className="text-muted-foreground">
-                    Built strong fundamentals in React, Node.js, and database design
+                    Built strong fundamentals in React, Node.js, and database
+                    design
                   </p>
                   <div className="text-sm text-muted-foreground">
                     React • Node.js • MongoDB • Express.js
@@ -115,10 +131,15 @@ const Experience = () => {
 
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-8 text-center space-y-4">
-                  <div className="text-lg font-semibold text-primary">2022 - 2023</div>
-                  <h3 className="text-xl font-bold text-claude-accent">Expansion</h3>
+                  <div className="text-lg font-semibold text-primary">
+                    2022 - 2023
+                  </div>
+                  <h3 className="text-xl font-bold text-claude-accent">
+                    Expansion
+                  </h3>
                   <p className="text-muted-foreground">
-                    Advanced to TypeScript, cloud services, and performance optimization
+                    Advanced to TypeScript, cloud services, and performance
+                    optimization
                   </p>
                   <div className="text-sm text-muted-foreground">
                     TypeScript • AWS • Performance • Testing
@@ -128,10 +149,15 @@ const Experience = () => {
 
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-8 text-center space-y-4">
-                  <div className="text-lg font-semibold text-primary">2023 - Present</div>
-                  <h3 className="text-xl font-bold text-claude-accent">Innovation</h3>
+                  <div className="text-lg font-semibold text-primary">
+                    2023 - Present
+                  </div>
+                  <h3 className="text-xl font-bold text-claude-accent">
+                    Innovation
+                  </h3>
                   <p className="text-muted-foreground">
-                    Embraced AI technologies and modern frameworks like Next.js and FastAPI
+                    Embraced AI technologies and modern frameworks like Next.js
+                    and FastAPI
                   </p>
                   <div className="text-sm text-muted-foreground">
                     Next.js • FastAPI • AI/ML • Leadership
@@ -150,16 +176,17 @@ const Experience = () => {
             Ready to Add Value to Your Team?
           </h2>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            Let's discuss how my experience and skills can contribute to your next project.
+            Let's discuss how my experience and skills can contribute to your
+            next project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <a
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-3 bg-background text-primary rounded-lg font-medium hover:bg-claude-warm-gray transition-colors hover-lift"
             >
               Get In Touch
             </a>
-            <a 
+            <a
               href="https://workwithfaran.com/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
