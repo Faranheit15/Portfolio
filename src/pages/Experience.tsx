@@ -12,7 +12,7 @@ const Experience = () => {
   }, []);
 
   const totalYears = () => {
-    const startDate = new Date("2021-03-01");
+    const startDate = new Date("2021-09-03");
     const endDate = new Date();
     const years =
       endDate.getFullYear() -

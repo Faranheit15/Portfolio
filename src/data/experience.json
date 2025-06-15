@@ -1,10 +1,9 @@
-
 [
   {
     "id": "usefulbi",
     "company": "UsefulBI Corp",
     "role": "Software Engineer",
-    "location": "Remote",
+    "location": "(Hybrid) Lucknow, India",
     "startDate": "2023-01",
     "endDate": null,
     "current": true,
@@ -17,7 +16,15 @@
       "Mentored junior developers on best practices for React and modern web development",
       "Integrated third-party APIs and services to enhance platform functionality"
     ],
-    "technologies": ["React", "TypeScript", "FastAPI", "Python", "Tailwind CSS", "PostgreSQL", "AWS"],
+    "technologies": [
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "AWS"
+    ],
     "achievements": [
       "Led the migration of legacy codebase to modern React architecture",
       "Improved application performance by 50% through code optimization",
@@ -28,8 +35,8 @@
     "id": "accenture",
     "company": "Accenture",
     "role": "Application Development Analyst",
-    "location": "Hyderabad, India",
-    "startDate": "2021-03",
+    "location": "(Remote) Gurugram, India",
+    "startDate": "2021-09",
     "endDate": "2023-01",
     "current": false,
     "description": "Contributed to enterprise-level application development projects across multiple domains including finance and healthcare.",
@@ -41,7 +48,15 @@
       "Collaborated with business analysts to translate requirements into technical solutions",
       "Optimized database queries and improved application performance"
     ],
-    "technologies": ["React", "Node.js", "MongoDB", "Express.js", "Okta", "Jest", "AWS"],
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "Okta",
+      "Jest",
+      "AWS"
+    ],
     "achievements": [
       "Delivered 5+ projects on time with zero post-deployment critical issues",
       "Reduced application load time by 45% through performance optimizations",
