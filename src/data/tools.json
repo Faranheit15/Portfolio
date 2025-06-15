@@ -1,0 +1,83 @@
+
+{
+  "tools": [
+    {
+      "id": "development",
+      "category": "Development",
+      "tools": [
+        {
+          "name": "Visual Studio Code",
+          "description": "Primary code editor with extensive extensions",
+          "url": "https://code.visualstudio.com/",
+          "icon": "💻"
+        },
+        {
+          "name": "GitHub",
+          "description": "Version control and project collaboration",
+          "url": "https://github.com",
+          "icon": "🐙"
+        },
+        {
+          "name": "Vercel",
+          "description": "Deployment platform for Next.js applications",
+          "url": "https://vercel.com",
+          "icon": "▲"
+        },
+        {
+          "name": "Figma",
+          "description": "Design and prototyping tool",
+          "url": "https://figma.com",
+          "icon": "🎨"
+        }
+      ]
+    },
+    {
+      "id": "productivity",
+      "category": "Productivity",
+      "tools": [
+        {
+          "name": "Notion",
+          "description": "All-in-one workspace for notes and project management",
+          "url": "https://notion.so",
+          "icon": "📝"
+        },
+        {
+          "name": "Linear",
+          "description": "Issue tracking and project management",
+          "url": "https://linear.app",
+          "icon": "📊"
+        },
+        {
+          "name": "Slack",
+          "description": "Team communication and collaboration",
+          "url": "https://slack.com",
+          "icon": "💬"
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "category": "Design & Media",
+      "tools": [
+        {
+          "name": "Canva",
+          "description": "Graphic design and visual content creation",
+          "url": "https://canva.com",
+          "icon": "🎨"
+        },
+        {
+          "name": "Unsplash",
+          "description": "High-quality stock photography",
+          "url": "https://unsplash.com",
+          "icon": "📸"
+        },
+        {
+          "name": "Lucide",
+          "description": "Beautiful and consistent icon library",
+          "url": "https://lucide.dev",
+          "icon": "🔧"
+        }
+      ]
+    }
+  ]
+}

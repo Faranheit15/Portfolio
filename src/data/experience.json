@@ -1,0 +1,51 @@
+
+[
+  {
+    "id": "usefulbi",
+    "company": "UsefulBI Corp",
+    "role": "Software Engineer",
+    "location": "Remote",
+    "startDate": "2023-01",
+    "endDate": null,
+    "current": true,
+    "description": "Leading frontend development initiatives and contributing to full-stack solutions for business intelligence platforms.",
+    "responsibilities": [
+      "Developed and maintained React-based dashboard applications with TypeScript and Tailwind CSS",
+      "Implemented responsive design patterns improving mobile user experience by 40%",
+      "Built RESTful APIs using FastAPI and Python, reducing data processing time by 35%",
+      "Collaborated with cross-functional teams to deliver features on schedule",
+      "Mentored junior developers on best practices for React and modern web development",
+      "Integrated third-party APIs and services to enhance platform functionality"
+    ],
+    "technologies": ["React", "TypeScript", "FastAPI", "Python", "Tailwind CSS", "PostgreSQL", "AWS"],
+    "achievements": [
+      "Led the migration of legacy codebase to modern React architecture",
+      "Improved application performance by 50% through code optimization",
+      "Introduced automated testing practices increasing code coverage to 85%"
+    ]
+  },
+  {
+    "id": "accenture",
+    "company": "Accenture",
+    "role": "Application Development Analyst",
+    "location": "Hyderabad, India",
+    "startDate": "2021-03",
+    "endDate": "2023-01",
+    "current": false,
+    "description": "Contributed to enterprise-level application development projects across multiple domains including finance and healthcare.",
+    "responsibilities": [
+      "Developed scalable web applications using React, Node.js, and MongoDB",
+      "Implemented authentication and authorization systems using Okta and OAuth 2.0",
+      "Created comprehensive unit and integration tests ensuring 90% code coverage",
+      "Participated in code reviews and maintained coding standards across team",
+      "Collaborated with business analysts to translate requirements into technical solutions",
+      "Optimized database queries and improved application performance"
+    ],
+    "technologies": ["React", "Node.js", "MongoDB", "Express.js", "Okta", "Jest", "AWS"],
+    "achievements": [
+      "Delivered 5+ projects on time with zero post-deployment critical issues",
+      "Reduced application load time by 45% through performance optimizations",
+      "Received 'Outstanding Performance' rating for two consecutive quarters"
+    ]
+  }
+]

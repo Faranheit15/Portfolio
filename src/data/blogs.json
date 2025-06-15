@@ -1,0 +1,39 @@
+
+[
+  {
+    "id": "future-of-ai-development",
+    "title": "The Future of AI in Web Development",
+    "slug": "future-of-ai-development",
+    "excerpt": "Exploring how artificial intelligence is reshaping the landscape of web development and what developers need to know to stay ahead.",
+    "content": "content/future-of-ai-development.mdx",
+    "publishedAt": "2024-03-15",
+    "readTime": "8 min read",
+    "tags": ["AI", "Web Development", "Machine Learning", "Future Tech"],
+    "image": "/images/ai-development-blog.jpg",
+    "featured": true
+  },
+  {
+    "id": "react-performance-optimization",
+    "title": "React Performance Optimization: Beyond the Basics",
+    "slug": "react-performance-optimization",
+    "excerpt": "Advanced techniques for optimizing React applications, including code splitting, memoization, and bundle analysis.",
+    "content": "content/react-performance-optimization.mdx",
+    "publishedAt": "2024-02-28",
+    "readTime": "12 min read",
+    "tags": ["React", "Performance", "Optimization", "JavaScript"],
+    "image": "/images/react-performance-blog.jpg",
+    "featured": false
+  },
+  {
+    "id": "building-scalable-apis",
+    "title": "Building Scalable APIs with FastAPI and Python",
+    "slug": "building-scalable-apis",
+    "excerpt": "A comprehensive guide to building high-performance, scalable APIs using FastAPI, including best practices and real-world examples.",
+    "content": "content/building-scalable-apis.mdx",
+    "publishedAt": "2024-01-20",
+    "readTime": "15 min read",
+    "tags": ["FastAPI", "Python", "API Design", "Backend"],
+    "image": "/images/fastapi-blog.jpg",
+    "featured": true
+  }
+]

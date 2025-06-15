@@ -1,0 +1,54 @@
+[
+  {
+    "id": "invoicey",
+    "title": "Invoicey",
+    "description": "A comprehensive invoice management application built with modern web technologies. Features include invoice generation, client management, payment tracking, and automated reminders.",
+    "longDescription": "Invoicey is a full-featured invoice management system designed for freelancers and small businesses. The application provides a clean, intuitive interface for creating professional invoices, managing client relationships, and tracking payments. Built with performance and scalability in mind.",
+    "technologies": [
+      "Next.js",
+      "MongoDB",
+      "Firebase",
+      "Tailwind CSS",
+      "TypeScript"
+    ],
+    "features": [
+      "Professional invoice generation",
+      "Client management system",
+      "Payment tracking and reminders",
+      "Real-time collaboration",
+      "Export to PDF",
+      "Analytics dashboard"
+    ],
+    "githubUrl": "https://github.com/Faranheit15/invoicey",
+    "liveUrl": "https://invoicey-dev.vercel.app",
+    "image": "/images/invoicey-preview.jpg",
+    "status": "completed",
+    "year": 2025
+  },
+  {
+    "id": "netflix-gpt",
+    "title": "Netflix-GPT",
+    "description": "A Netflix clone enhanced with GPT-3 powered movie recommendations. Users can search for movies using natural language and get AI-powered suggestions based on their preferences.",
+    "longDescription": "Netflix-GPT combines the familiar Netflix interface with the power of OpenAI's GPT-3 to create an intelligent movie discovery platform. The application features natural language search, personalized recommendations, and a responsive design that works seamlessly across all devices.",
+    "technologies": [
+      "React",
+      "Firebase",
+      "OpenAI API",
+      "Tailwind CSS",
+      "TMDB API"
+    ],
+    "features": [
+      "GPT-3 powered movie search",
+      "Personalized recommendations",
+      "User authentication",
+      "Responsive movie grid",
+      "Trailer integration",
+      "Watchlist functionality"
+    ],
+    "githubUrl": "https://github.com/Faranheit15/netflix-gpt",
+    "liveUrl": "https://faranheit15.github.io/Netflix-GPT/",
+    "image": "/images/netflix-gpt-preview.jpg",
+    "status": "completed",
+    "year": 2023
+  }
+]

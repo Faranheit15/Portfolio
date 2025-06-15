@@ -1,60 +1,73 @@
-### Hi there, I'm Faran Mohammad - aka [Faranheit][website] 👋
+# Welcome to your Lovable project
 
-## I'm a self-taught Developer, Designer and a Tech Enthusiast!
-- 🔭 I’m currently learning Python and side-by-side a little bit of ES6 and MERNstack Development!
-- 🌱 I’m a learner and I try to learn something new everyday 🤣
-- 👯 I’m looking to collaborate with other developers
-- 🥅 2021 Goals: Get a decent job and contribute more to Open Source projects
+## Project info
 
-### Connect with me:
+**URL**: https://lovable.dev/projects/b35ad6cc-14bd-4a45-900c-5ab4acd0946b
 
-[<img align="left" alt="https://faran.xyz/" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website]
-[<img align="left" alt="email" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.4.0/icons/mail-dot-ru.svg" />][email]
-[<img align="left" alt="LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
-[<img align="left" alt="Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+## How can I edit this code?
 
-<br />
+There are several ways of editing your application.
 
-<br>
-<br>
+**Use Lovable**
 
-![](https://komarev.com/ghpvc/?username=Faranheit15&color=grey)
+Simply visit the [Lovable Project](https://lovable.dev/projects/b35ad6cc-14bd-4a45-900c-5ab4acd0946b) and start prompting.
 
-<br />
+Changes made via Lovable will be committed automatically to this repo.
 
-### Languages and Tools:
+**Use your preferred IDE**
 
-<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
-<img align="left" alt="Sass" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png" />
-<img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
-<img align="left" alt="React" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
-<img align="left" alt="Flutter" width="26px" src="https://cdn.iconscout.com/icon/free/png-512/flutter-2038877-1720090.png" />
-<img align="left" alt="Inkscape" width="26px" src="https://cdn.iconscout.com/icon/free/png-512/inkscape-569205.png" />
-<img align="left" alt="Node.js" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png" />
-<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-<br>
-<br>
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-### 📕 Latest Blog Posts
-<!-- BLOG-POST-LIST:START -->
-- [Android 101](https://faranheit.medium.com/android-101-f30be123c2c5)
-- [Linux Year One](https://faranheit.medium.com/linux-year-one-23ff9f1eb512)
-- [Postman - Installation on Linux](https://faranheit.medium.com/postman-installation-on-linux-e293c399ed4d)
-- [Flutter - Installation on Linux](https://faranheit.medium.com/flutter-installation-on-linux-5868849abadf)
-- [TCS NQT 2020 - Interview Experience](https://www.geeksforgeeks.org/tcs-nqt-interview-experience-2020-21/)
-- [Custom ROM on an MiPhone](https://faranheit.medium.com/custom-rom-on-an-miphone-3a90cb16de5a)
-- [TCS NQT 2020 - Interview Experience](https://faranheit.medium.com/tcs-nqt-2020-interview-experience-b8a05b32fb4d)
-<!-- BLOG-POST-LIST:END -->
+Follow these steps:
 
----
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-<img align="left" alt="Faranheit's Github Stats" src="https://github-readme-stats.vercel.app/api?username=Faranheit15&show_icons=true&hide_border=true" />
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-[website]: https://faranheit.netlify.app/
-[instagram]: https://www.instagram.com/faran.codes/
-[linkedin]: https://www.linkedin.com/in/faran-mohammad-7b938917a/
-[blogs]: https://faranheit.medium.com/
-[email]: mailto:ffaranm15@gmail.com
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/b35ad6cc-14bd-4a45-900c-5ab4acd0946b) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
