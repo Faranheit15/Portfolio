@@ -1,15 +1,22 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import toolsData from "@/data/tools.json";
+import websitesData from "@/data/websites.json"; // ← new import
 
 const Tools = () => {
+  // If you want the same fade‐in animation you used elsewhere:
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => setIsVisible(true), []);
+
   return (
     <Layout>
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-background via-claude-cream to-claude-warm-gray">
         <div
-          className="container-custom text-center space-y-6 transition-all duration-1000 \
-          ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}"
+          className={`container-custom text-center space-y-6 transition-all duration-1000 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-primary">
             Tools
@@ -35,7 +42,7 @@ const Tools = () => {
                     className="border-0 shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <CardContent className="p-6 space-y-4 text-center">
-                      <div className="text-5xl">{tool.icon}</div>
+                      <img src={tool.icon} alt={tool.name} className="w-16 h-16 mx-auto mb-4" />
                       <h3 className="text-xl font-bold text-primary">
                         {tool.name}
                       </h3>
@@ -56,6 +63,46 @@ const Tools = () => {
               </div>
             </div>
           ))}
+
+          {/* ← New Super Cool Websites Section */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-serif font-bold text-primary">
+              Super Cool Websites
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="min-w-full bg-background rounded-lg overflow-hidden">
+                <thead className="bg-claude-cream">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-primary">
+                      Site
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-primary">
+                      Description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {websitesData.websites.map((site) => (
+                    <tr key={site.url} className="border-b last:border-none">
+                      <td className="px-6 py-4 text-sm">
+                        <a
+                          href={site.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline hover:text-claude-accent"
+                        >
+                          {site.name}
+                        </a>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">
+                        {site.description}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,0 +1,49 @@
+{
+  "websites": [
+    {
+      "name": "Tome",
+      "url": "https://tome.app",
+      "description": "AI powered storytelling and presentations"
+    },
+    {
+      "name": "Descriptcom",
+      "url": "https://descript.com",
+      "description": "Podcast and video editing magic"
+    },
+    {
+      "name": "Durable",
+      "url": "https://durable.co",
+      "description": "Builds full websites in 30 seconds with AI"
+    },
+    {
+      "name": "Runway ML",
+      "url": "https://runwayml.com",
+      "description": "Next level video editing and AI effects"
+    },
+    {
+      "name": "Copy.ai",
+      "url": "https://copy.ai",
+      "description": "Writes emails, ads and blogs for you"
+    },
+    {
+      "name": "Taplio",
+      "url": "https://taplio.com",
+      "description": "LinkedIn content powered by AI"
+    },
+    {
+      "name": "Looka",
+      "url": "https://looka.com",
+      "description": "Logo and brand kit generator"
+    },
+    {
+      "name": "Roadmaps",
+      "url": "https://roadmap.sh",
+      "description": "Roadmaps for developers"
+    },
+    {
+      "name": "Huggingface Deepsite",
+      "url": "https://huggingface.co/spaces/enzostvs/deepsite",
+      "description": "Bolt and Lovable alternative to create websites with AI based on Deepseek"
+    }
+  ]
+}

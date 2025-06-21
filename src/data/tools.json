@@ -1,81 +1,56 @@
-
 {
   "tools": [
     {
-      "id": "development",
-      "category": "Development",
+      "id": "tools",
+      "category": "Tools & Resources",
       "tools": [
         {
-          "name": "Visual Studio Code",
-          "description": "Primary code editor with extensive extensions",
-          "url": "https://code.visualstudio.com/",
-          "icon": "💻"
+          "name": "Postman",
+          "description": "API testing tool.",
+          "url": "https://www.postman.com/",
+          "icon": "https://s3.amazonaws.com/kinlane-productions2/postman/postman-icon.png"
         },
         {
-          "name": "GitHub",
-          "description": "Version control and project collaboration",
-          "url": "https://github.com",
-          "icon": "🐙"
-        },
-        {
-          "name": "Vercel",
-          "description": "Deployment platform for Next.js applications",
-          "url": "https://vercel.com",
-          "icon": "▲"
-        },
-        {
-          "name": "Figma",
-          "description": "Design and prototyping tool",
-          "url": "https://figma.com",
-          "icon": "🎨"
+          "name": "DBeaver",
+          "description": "Connect to any database from a single tool.",
+          "url": "https://dbeaver.io/",
+          "icon": "https://dbeaver.io/wp-content/uploads/2015/09/beaver-head.png"
         }
       ]
     },
     {
-      "id": "productivity",
-      "category": "Productivity",
+      "id": "vscode-extensions",
+      "category": "VS Code Extensions",
       "tools": [
         {
-          "name": "Notion",
-          "description": "All-in-one workspace for notes and project management",
-          "url": "https://notion.so",
-          "icon": "📝"
+          "name": "Headwind",
+          "description": "Headwind is an opinionated Tailwind CSS class sorter for Visual Studio Code. It enforces consistent ordering of classes by parsing your code and reprinting class tags to follow a given order.",
+          "url": "https://marketplace.visualstudio.com/items?itemName=heybourn.headwind",
+          "icon": "https://heybourn.gallerycdn.vsassets.io/extensions/heybourn/headwind/1.7.0/1595154492943/Microsoft.VisualStudio.Services.Icons.Default"
         },
         {
-          "name": "Linear",
-          "description": "Issue tracking and project management",
-          "url": "https://linear.app",
-          "icon": "📊"
-        },
-        {
-          "name": "Slack",
-          "description": "Team communication and collaboration",
-          "url": "https://slack.com",
-          "icon": "💬"
+          "name": "Import Cost",
+          "description": "This extension will display inline in the editor the size of the imported package. The extension utilizes webpack in order to detect the imported size.",
+          "url": "https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost",
+          "icon": "https://wix.gallerycdn.vsassets.io/extensions/wix/vscode-import-cost/3.3.0/1649579526643/Microsoft.VisualStudio.Services.Icons.Default"
         }
       ]
     },
     {
-      "id": "design",
-      "category": "Design & Media",
+      "id": "chrome-extensions",
+      "category": "Chrome Extensions",
       "tools": [
         {
-          "name": "Canva",
-          "description": "Graphic design and visual content creation",
-          "url": "https://canva.com",
-          "icon": "🎨"
+          "name": "Wapplyzer",
+          "description": "Wappalyzer is a technology profiler that shows you what websites are built with. ",
+          "url": "https://chromewebstore.google.com/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg?hl=en",
+          "icon": "https://lh3.googleusercontent.com/Ha_EGIePt_To3ErkPwaLigbdQbiTaJpWneU7Z3iNFspWfRoEEPH4tp61DC_nyXqrAaDfpdXdVg0lfKq_0d9PnnqiDpw=s60"
         },
         {
-          "name": "Unsplash",
-          "description": "High-quality stock photography",
-          "url": "https://unsplash.com",
-          "icon": "📸"
-        },
-        {
-          "name": "Lucide",
-          "description": "Beautiful and consistent icon library",
-          "url": "https://lucide.dev",
-          "icon": "🔧"
+          "name": "Dark Reader",
+          "description": "Dark mode for every website.",
+          "url": "https://chromewebstore.google.com/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh?hl=en",
+          "icon": "https://lh3.googleusercontent.com/T66wTLk-gpBBGsMm0SDJJ3VaI8YM0Utr8NaGCSANmXOfb84K-9GmyXORLKoslfxtasKtQ4spDCdq_zlp_t3QQ6SI0A=s60"
         }
       ]
     }
