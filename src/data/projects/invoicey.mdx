@@ -1,0 +1,79 @@
+---
+title: 'Invoicey'
+description: 'A production-focused invoicing app built with Next.js App Router, Firebase Auth, and MongoDB. Helps users create, edit, manage, preview, and export professional invoices with AI-assisted drafting.'
+image: '/project/appwrite.png'
+technologies:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'Firebase'
+  - 'MongoDB'
+  - 'Mongoose'
+  - 'Tailwind CSS'
+  - 'shadcn/ui'
+  - 'Bun'
+  - 'Vercel'
+  - 'Gemini'
+github: 'https://github.com/Faranheit15/invoicey'
+live: 'https://invoicey-dev.vercel.app/'
+timeline: '1 month'
+role: 'Full Stack'
+team: 'Solo'
+status: 'completed'
+featured: true
+challenges:
+  - 'Firebase Admin SDK token verification in API routes'
+  - 'Multi-format invoice export (PDF, HTML, CSV, JSON)'
+  - 'AI-assisted invoice drafting with follow-up clarification'
+  - 'Line item management with live preview'
+learnings:
+  - 'Firebase client and Admin SDK split auth architecture'
+  - 'MongoDB Mongoose modeling for invoicing workflows'
+  - 'Building multi-stage Docker image with Bun runtime'
+isPublished: true
+---
+
+## Overview
+
+Invoicey is a production-focused invoicing app designed for freelancers, founders, and small teams that need a simple but polished billing workflow. Built with Next.js App Router, Firebase Auth, and MongoDB.
+
+## Core Features
+
+- **Google Sign-In** via Firebase client SDK
+- **Invoice CRUD** with Firebase ID token verification on every API route
+- **MongoDB persistence** with Mongoose models and soft-delete support
+- **AI-assisted drafting** — describe an invoice in plain English and Gemini fills in the fields with follow-up clarification questions
+- **Multi-format export** — Print/PDF, HTML, CSV, and JSON
+- **Live preview** while editing with line item management, date pickers, and currency selectors
+- **Persistent dark/light mode** initialized before hydration to avoid flash
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Auth | Firebase Client + Admin SDK |
+| Database | MongoDB + Mongoose |
+| UI | shadcn/ui + Aceternity patterns |
+| AI | Gemini via `/api/ai/invoice-assistant` |
+| Runtime | Bun |
+| Deployment | Vercel |
+
+## Architecture
+
+Authentication uses a split model: the Firebase client SDK handles Google sign-in in the browser, and the Firebase Admin SDK verifies ID tokens server-side on every API request. The session token returned after verification is used to scope all invoice reads and writes by `userId` in MongoDB.
+
+The AI assistant accepts a natural language prompt plus the current form draft, sends both to Gemini, and returns a structured patch payload along with clarification questions if any fields are ambiguous.
+
+## Export Pipeline
+
+Invoicey supports four export formats from a single invoice record:
+
+- **Print/PDF** — generates HTML and triggers `window.print()`
+- **HTML** — downloads a self-contained HTML blob
+- **CSV** — flattens line items into comma-separated format
+- **JSON** — raw invoice record for programmatic use
+
+## What I Learned
+
+Building Invoicey deepened my understanding of the Firebase Admin SDK token verification flow and how to structure MongoDB schemas for financial records with soft-delete and settle-to-paid lifecycle transitions. The multi-stage Bun Dockerfile was a first for me and significantly reduced the production image size.

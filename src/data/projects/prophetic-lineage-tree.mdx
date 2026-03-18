@@ -1,0 +1,81 @@
+---
+title: 'Prophetic Lineage Tree'
+description: 'An interactive lineage explorer for prophets and key historical-religious figures mentioned across the Quran, Bible, and Torah, built on a single curated dataset of 190+ linked persons.'
+image: '/project/syncify.png'
+technologies:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'Tailwind CSS'
+  - 'React Flow'
+  - 'Dagre'
+  - 'Zustand'
+  - 'Fuse.js'
+  - 'Bun'
+  - 'Vercel'
+github: 'https://github.com/Faranheit15/Prophetic-Lineage-Tree'
+live: 'https://prophetic-lineage-tree.vercel.app/'
+timeline: '1 month'
+role: 'Full Stack'
+team: 'Solo'
+status: 'completed'
+featured: true
+challenges:
+  - 'Laying out a large directed acyclic graph (190+ nodes) readably with Dagre auto-layout'
+  - 'Fuzzy search across three name variants (Islamic, Biblical, Hebrew) simultaneously'
+  - 'Lineage path highlighting without re-rendering the entire graph'
+  - 'Statically generating all person profile pages from a single JSON dataset'
+learnings:
+  - 'React Flow node/edge customisation and performance tuning for large graphs'
+  - 'Dagre layout algorithm configuration for hierarchical genealogy trees'
+  - 'Zustand slice patterns for complex shared UI state (filters, highlights, selected person)'
+  - 'Cross-scripture data modelling with multi-name and multi-source support'
+isPublished: true
+---
+
+## Overview
+
+Prophetic Lineage Tree is an interactive graph explorer that maps the family relationships between prophets and key figures from the Quran, Bible, and Torah. The data comes from a single hand-curated JSON file with 190+ persons, each carrying Islamic, Biblical, and Hebrew name variants, source references, and full parent/spouse/child links.
+
+## Key Features
+
+- **Interactive graph** — zoom, pan, minimap, and automatic Dagre hierarchical layout
+- **Person side panel** — click any node to see a detailed profile with verse references and notes, or navigate to a dedicated `/person/[id]` page (statically generated for all 190+ entries)
+- **Cross-scripture tagging** — every person is tagged by source (Quran, Bible, Torah, Hadith, Tradition) and role (Prophet, Patriarch, Matriarch, King, Wife, etc.)
+- **Fuzzy search** — powered by Fuse.js, searches across all three name variants simultaneously
+- **Filter controls** — filter by source, type, and era with quick-toggle buttons for prophets
+- **Lineage highlighting** — click a person to highlight their ancestor and descendant paths through the graph
+
+## Data Model
+
+All data lives in `data/prophetic-lineage.json`. Each person entry supports:
+
+| Field | Description |
+|---|---|
+| `islamic` / `biblical` / `hebrew` | Name variants |
+| `type` | Role (Prophet, Patriarch, Matriarch, King, Wife…) |
+| `sources` | Scripture sources (Quran, Bible, Torah, Hadith) |
+| `fatherId` / `motherId` | Parent links |
+| `spouses` | Spouse links |
+| `childrenIds` | Child links |
+| `verses` | Scripture verse references |
+| `notes` | Descriptive notes |
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v4 |
+| Graph Engine | React Flow (`@xyflow/react`) |
+| Layout Algorithm | Dagre (`@dagrejs/dagre`) |
+| State | Zustand |
+| Search | Fuse.js |
+| Runtime | Bun |
+| Deployment | Vercel |
+
+## What I Learned
+
+The most interesting challenge was making a 190-node graph feel navigable. Dagre handles the automatic layout well, but React Flow needs careful memoisation to avoid re-rendering every node on state changes. Zustand's slice pattern was ideal here — filter state, highlight state, and selected-person state each live in their own slice so updates are scoped and cheap.
+
+The cross-scripture naming problem was also non-trivial. The same figure can be called Adam, Ādam, and אָדָם depending on context, so Fuse.js fuzzy search runs across all three name fields at once with tuned thresholds to avoid false positives.

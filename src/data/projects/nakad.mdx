@@ -1,0 +1,112 @@
+---
+title: 'Nakad'
+description: "A real-time shared debt ledger — two users open a balance account, record lend/repay transactions, and see each other's entries update instantly via WebSocket. Ships on iOS and Android via Expo, backed by FastAPI and Neon PostgreSQL."
+image: '/project/pasandida.png'
+technologies:
+  - 'React Native'
+  - 'Expo'
+  - 'TypeScript'
+  - 'FastAPI'
+  - 'Python'
+  - 'PostgreSQL'
+  - 'NativeWind'
+  - 'TanStack Query'
+  - 'Zustand'
+  - 'WebSocket'
+github: 'https://github.com/Faranheit15/nakad'
+live: 'https://github.com/Faranheit15/nakad'
+timeline: '1 month'
+role: 'Full Stack'
+team: 'Solo'
+status: 'in-progress'
+featured: true
+challenges:
+  - 'Real-time sync between two clients over WebSocket with TanStack Query cache invalidation'
+  - 'OTP phone auth without a paid SMS provider during development'
+  - 'Balance computed purely in SQL — never stored, always derived on demand'
+  - 'Expo dev client setup with EAS Build across Android and iOS'
+learnings:
+  - 'FastAPI WebSocket manager grouped by ledger_id for scoped broadcasts'
+  - 'SQLAlchemy 2.0 async patterns — lazy=raise forces explicit joins, no silent N+1'
+  - 'Zustand + TanStack Query split: client state vs server cache with no overlap'
+  - 'NativeWind v4 theming with SecureStore-persisted light/dark preference'
+isPublished: true
+---
+
+## Overview
+
+**Nakad** (نقد) means "cash, immediate" in Arabic. The app solves a specific problem: two people who regularly lend and repay each other need a shared, always-in-sync ledger — not a spreadsheet, not a WhatsApp thread.
+
+It is a full-stack monorepo with three packages: a FastAPI backend, an Expo React Native mobile app (the primary client), and a Next.js web scaffold for a future web interface.
+
+## How It Works
+
+1. Sign in with your phone number — an OTP is sent (currently returned in the API response for dev; SMS via Twilio is on the roadmap)
+2. Open a 1:1 ledger with a contact by matching hashed phone numbers against registered users
+3. Record **lend** or **repay** transactions against the ledger
+4. Both users see the transaction feed update in real time over a WebSocket connection — no pull-to-refresh needed
+
+## Real-Time Architecture
+
+The backend runs an in-memory WebSocket room map keyed by `ledger_id`. When a transaction is created or soft-deleted via the REST API, the service layer calls `ledger_ws_manager.broadcast(ledger_id, payload)` after the database commit. Both connected clients receive the event and update their TanStack Query cache directly — no refetch round-trip.
+
+Reconnection on the mobile client uses exponential backoff: 2s → 4s → 8s → max 10s.
+
+## Balance Computation
+
+The net balance is never stored in the database. It is computed on demand in SQL via a `CASE`/`SUM` aggregation in `TransactionRepository.get_balance()`:
+
+| Condition | Effect |
+|---|---|
+| `payer = me`, `type = lend` | `+amount` (they owe me more) |
+| `payer = me`, `type = repay` | `-amount` (I received payment) |
+| `payer ≠ me`, `type = lend` | `-amount` (I owe them) |
+| `payer ≠ me`, `type = repay` | `+amount` (they repaid me) |
+
+Positive balance = the other party owes you. Negative = you owe them.
+
+## Tech Stack
+
+### Backend
+| Layer | Technology |
+|---|---|
+| Framework | FastAPI 0.129 |
+| Language | Python 3.12 |
+| ORM | SQLAlchemy 2.0 (async) |
+| Database | Neon PostgreSQL (serverless, asyncpg) |
+| Validation | Pydantic v2 |
+| Auth | JWT HS256 via `python-jose` |
+| Real-time | FastAPI native WebSocket |
+| Monitoring | Sentry SDK |
+
+### Mobile
+| Layer | Technology |
+|---|---|
+| Framework | Expo SDK 54 / React Native 0.81 |
+| Language | TypeScript 5 |
+| Router | Expo Router v6 (file-based) |
+| Styling | NativeWind v4 (Tailwind v3) |
+| Server State | TanStack Query v5 |
+| Client State | Zustand v5 |
+| HTTP | Axios |
+| Storage | expo-secure-store |
+| Build | EAS Build |
+
+## Backend Architecture Rules
+
+The backend enforces a strict three-layer separation:
+
+- **Router** — no DB access, no business logic; just HTTP in/out
+- **Service** — owns business logic and `session.commit()`
+- **Repository** — DB queries only; calls `flush + refresh`, never `commit`
+
+All SQLAlchemy relationships use `lazy="raise"` — any unintended lazy load throws at runtime, forcing explicit `selectinload` / `joinedload` and preventing silent N+1 queries.
+
+## Roadmap
+
+- SMS OTP via Twilio / MSG91 (remove OTP from API response)
+- Push notifications on new transactions
+- Group ledgers with more than two members
+- Expense splitting (equal / percentage / custom shares)
+- Full web frontend at feature parity with mobile
+- Redis-backed WebSocket manager for multi-instance deployments

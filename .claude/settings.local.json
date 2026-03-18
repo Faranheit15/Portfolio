@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find D:/workspace/Portfolio -maxdepth 1 -name \"*.config.*\" -o -name \"*.mjs\" | xargs grep -l \"localStorage\" 2>/dev/null)",
+      "Bash(bun add:*)",
+      "Bash(bun run:*)",
+      "Bash(cd:*)",
+      "Bash(curl:*)",
+      "Bash(bun remove:*)"
+    ]
+  }
+}
