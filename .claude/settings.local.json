@@ -7,7 +7,9 @@
       "Bash(cd:*)",
       "Bash(curl:*)",
       "Bash(bun remove:*)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "WebFetch(domain:ntl.fyi)",
+      "WebFetch(domain:opennext.js.org)"
     ]
   }
 }

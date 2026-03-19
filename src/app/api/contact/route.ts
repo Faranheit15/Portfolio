@@ -85,7 +85,7 @@ async function submitToNetlify(data: {
     message: data.message,
   });
 
-  const response = await fetch(siteUrl, {
+  const response = await fetch(`${siteUrl}/__forms.html`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

@@ -99,15 +99,6 @@ export default function ContactForm() {
 
   return (
     <Card className="border-none bg-transparent shadow-none">
-      {/* Hidden form for Netlify Forms build-bot detection */}
-      <form name="contact" data-netlify="true" hidden aria-hidden="true">
-        <input type="hidden" name="form-name" value="contact" />
-        <input name="name" type="text" />
-        <input name="email" type="email" />
-        <input name="phone" type="tel" />
-        <textarea name="message"></textarea>
-      </form>
-
       <CardHeader>
         <CardTitle>Send me a message</CardTitle>
         <CardDescription>
