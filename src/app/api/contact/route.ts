@@ -62,6 +62,44 @@ function checkRateLimit(clientIP: string): {
   };
 }
 
+async function submitToNetlify(data: {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}): Promise<void> {
+  const siteUrl = process.env.NEXT_PUBLIC_URL;
+
+  if (!siteUrl) {
+    console.warn(
+      'NEXT_PUBLIC_URL not configured, skipping Netlify Forms submission',
+    );
+    return;
+  }
+
+  const body = new URLSearchParams({
+    'form-name': 'contact',
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    message: data.message,
+  });
+
+  const response = await fetch(siteUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Netlify Forms submission failed with status ${response.status}`,
+    );
+  }
+}
+
 async function sendToTelegram(data: {
   name: string;
   email: string;
@@ -156,6 +194,11 @@ export async function POST(request: NextRequest) {
         { status: 500 },
       );
     }
+
+    // Fire-and-forget: store submission in Netlify Forms (non-blocking)
+    submitToNetlify(validatedData).catch((err) => {
+      console.error('Netlify Forms submission error:', err);
+    });
 
     return NextResponse.json(
       {

@@ -9,9 +9,11 @@ function generateSystemPrompt(): string {
     .map((link) => `${link.name}: ${link.href}`)
     .join('\n- ');
   const experienceText = experiences
-    .map(
-      (exp) =>
-        `${exp.position} at ${exp.company} (${exp.startDate} - ${exp.endDate})`,
+    .flatMap((exp) =>
+      exp.positions.map(
+        (pos) =>
+          `${pos.title} at ${exp.company} (${pos.startDate} - ${pos.isCurrent ? 'Present' : pos.endDate})`,
+      ),
     )
     .join('\n- ');
   const projectsText = projects
