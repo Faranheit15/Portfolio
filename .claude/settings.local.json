@@ -6,7 +6,8 @@
       "Bash(bun run:*)",
       "Bash(cd:*)",
       "Bash(curl:*)",
-      "Bash(bun remove:*)"
+      "Bash(bun remove:*)",
+      "Bash(node -e \":*)"
     ]
   }
 }
