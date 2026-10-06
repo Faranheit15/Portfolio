@@ -1,29 +1,54 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { MediumArticle, stripHtml } from '@/lib/medium';
-import sanitizeHtml from 'sanitize-html';
-import Image from 'next/image';
+import { SOURCE_LABELS } from '@/lib/articles';
+import { BlogArticle } from '@/types/blog';
 import { Link } from 'next-view-transitions';
+import Image from 'next/image';
+import sanitizeHtml from 'sanitize-html';
 
 import Calender from '../svgs/Calender';
 import Website from '../svgs/Website';
 
-interface MediumBlogContentProps {
-  article: MediumArticle;
+interface ArticleContentProps {
+  article: BlogArticle;
 }
 
 const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   allowedTags: [
-    'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'a', 'img',
-    'ul', 'ol', 'li',
-    'blockquote', 'pre', 'code',
-    'em', 'strong', 'b', 'i', 'u', 's',
-    'figure', 'figcaption',
-    'br', 'hr',
-    'table', 'thead', 'tbody', 'tr', 'th', 'td',
-    'div', 'span',
+    'p',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'a',
+    'img',
+    'ul',
+    'ol',
+    'li',
+    'blockquote',
+    'pre',
+    'code',
+    'em',
+    'strong',
+    'b',
+    'i',
+    'u',
+    's',
+    'figure',
+    'figcaption',
+    'br',
+    'hr',
+    'table',
+    'thead',
+    'tbody',
+    'tr',
+    'th',
+    'td',
+    'div',
+    'span',
   ],
   allowedAttributes: {
     a: ['href', 'target', 'rel'],
@@ -41,27 +66,36 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   },
 };
 
-export function MediumBlogContent({ article }: MediumBlogContentProps) {
-  const { title, content, description, thumbnail, categories, pubDate, link } =
-    article;
+export function ArticleContent({ article }: ArticleContentProps) {
+  const {
+    title,
+    contentHtml,
+    description,
+    coverImage,
+    tags,
+    date,
+    link,
+    source,
+  } = article;
 
-  const formattedDate = new Date(pubDate).toLocaleDateString('en-US', {
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 
-  const sanitizedContent = sanitizeHtml(content, SANITIZE_OPTIONS);
-  const plainDescription = stripHtml(description).substring(0, 200);
+  const sanitizedContent = sanitizeHtml(contentHtml, SANITIZE_OPTIONS);
 
   return (
     <article className="mx-auto max-w-4xl">
       {/* Hero Section */}
       <header className="mb-8 space-y-6">
-        {thumbnail && (
+        {/* Medium bodies already open with their cover figure; only posts
+            whose cover lives outside the body (Hashnode) render a hero. */}
+        {coverImage && (
           <div className="relative aspect-video overflow-hidden rounded-lg">
             <Image
-              src={thumbnail}
+              src={coverImage}
               alt={title}
               fill
               className="object-cover"
@@ -72,7 +106,7 @@ export function MediumBlogContent({ article }: MediumBlogContentProps) {
 
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
-            {categories.map((tag) => (
+            {tags.map((tag) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
@@ -83,11 +117,11 @@ export function MediumBlogContent({ article }: MediumBlogContentProps) {
             {title}
           </h1>
 
-          <p className="text-muted-foreground text-xl">{plainDescription}</p>
+          <p className="text-muted-foreground text-xl">{description}</p>
 
           <div className="text-muted-foreground flex items-center gap-2 text-sm">
             <Calender className="size-6" />
-            <time dateTime={new Date(pubDate).toISOString()}>{formattedDate}</time>
+            <time dateTime={date}>{formattedDate}</time>
           </div>
         </div>
 
@@ -100,7 +134,7 @@ export function MediumBlogContent({ article }: MediumBlogContentProps) {
         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
       />
 
-      {/* Read on Medium */}
+      {/* Read on the source platform */}
       <div className="mt-12 border-t pt-8">
         <Button asChild variant="outline">
           <Link
@@ -110,7 +144,7 @@ export function MediumBlogContent({ article }: MediumBlogContentProps) {
             className="flex items-center gap-2"
           >
             <Website className="size-4" />
-            Read original on Medium
+            Read original on {SOURCE_LABELS[source]}
           </Link>
         </Button>
       </div>

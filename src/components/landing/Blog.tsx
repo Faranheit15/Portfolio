@@ -1,4 +1,4 @@
-import { getMediumArticles, toPostPreview } from '@/lib/medium';
+import { getAllArticles, toPostPreview } from '@/lib/articles';
 import { Link } from 'next-view-transitions';
 
 import { BlogCard } from '../blog/BlogCard';
@@ -7,7 +7,7 @@ import SectionHeading from '../common/SectionHeading';
 import { Button } from '../ui/button';
 
 export default async function Blog() {
-  const articles = await getMediumArticles();
+  const articles = await getAllArticles();
   const posts = articles.slice(0, 2).map(toPostPreview);
 
   return (

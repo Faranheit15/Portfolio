@@ -1,12 +1,20 @@
-import { BlogPostPreview } from '@/types/blog';
+import { BlogArticle } from '@/types/blog';
+
+import {
+  decodeEntities,
+  slugFromUrl,
+  stripHtml,
+  toExcerpt,
+  uniqueTags,
+} from './blog-utils';
 
 const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME || 'Faranheit';
 const RSS2JSON_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${MEDIUM_USERNAME}`;
 
-export interface MediumArticle {
+interface MediumArticle {
   title: string;
   link: string;
-  pubDate: string;
+  pubDate: string; // "YYYY-MM-DD HH:mm:ss", UTC without a zone marker
   author: string;
   thumbnail: string;
   description: string; // raw HTML excerpt from Medium
@@ -17,94 +25,35 @@ export interface MediumArticle {
 
 interface Rss2JsonResponse {
   status: string;
-  feed: {
-    title: string;
-    link: string;
-    author: string;
-    description: string;
-    image: string;
-  };
   items: MediumArticle[];
 }
 
-/**
- * Extract the slug from a Medium article URL.
- * Handles: https://medium.com/@user/slug-abc123?source=...
- *          https://user.medium.com/slug-abc123
- */
-export function extractSlug(url: string): string {
-  try {
-    const urlObj = new URL(url);
-    const segments = urlObj.pathname.split('/').filter(Boolean);
-    return segments[segments.length - 1] || url;
-  } catch {
-    const withoutQuery = url.split('?')[0];
-    const segments = withoutQuery.split('/').filter(Boolean);
-    return segments[segments.length - 1] || url;
-  }
+/** rss2json emits UTC timestamps without a zone; parse them as UTC, not local time. */
+function toIsoDate(pubDate: string): string {
+  const date = new Date(`${pubDate.replace(' ', 'T')}Z`);
+  return Number.isNaN(date.getTime())
+    ? new Date(pubDate).toISOString()
+    : date.toISOString();
 }
 
-/** Strip all HTML tags and collapse whitespace — used for plain-text excerpts. */
-export function stripHtml(html: string): string {
-  return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-}
-
-/**
- * Convert a MediumArticle to the BlogPostPreview shape so existing
- * BlogCard / BlogList components work without modification.
- */
-export function toPostPreview(article: MediumArticle): BlogPostPreview {
+function toBlogArticle(article: MediumArticle): BlogArticle {
   return {
-    slug: extractSlug(article.link),
-    frontmatter: {
-      title: article.title,
-      description: stripHtml(article.description).substring(0, 200),
-      image: '', // intentionally blank — BlogCard renders a gradient instead
-      tags: article.categories,
-      date: article.pubDate,
-      isPublished: true,
-    },
+    slug: slugFromUrl(article.link),
+    title: decodeEntities(article.title),
+    description: toExcerpt(stripHtml(article.description)),
+    // rss2json returns no thumbnail for Medium posts; the cover is the first
+    // figure in the body, so cards use the gradient.
+    coverImage: '',
+    tags: uniqueTags(article.categories),
+    date: toIsoDate(article.pubDate),
+    contentHtml: article.content,
+    link: article.link.split('?')[0],
+    source: 'medium',
   };
 }
 
-/** Collect all unique tags from a list of articles, sorted alphabetically. */
-export function getAllMediumTags(articles: MediumArticle[]): string[] {
-  const tagsSet = new Set<string>();
-  articles.forEach((article) => {
-    article.categories.forEach((tag) => tagsSet.add(tag.toLowerCase()));
-  });
-  return Array.from(tagsSet).sort();
-}
-
-/**
- * Return articles that share at least one category with the given slug,
- * sorted by number of shared categories descending.
- */
-export function getRelatedMediumArticles(
-  currentSlug: string,
-  articles: MediumArticle[],
-  max = 3,
-): MediumArticle[] {
-  const current = articles.find((a) => extractSlug(a.link) === currentSlug);
-  if (!current) return [];
-
-  const currentTags = current.categories.map((t) => t.toLowerCase());
-
-  return articles
-    .filter((a) => extractSlug(a.link) !== currentSlug)
-    .map((a) => ({
-      article: a,
-      score: a.categories.filter((t) => currentTags.includes(t.toLowerCase()))
-        .length,
-    }))
-    .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, max)
-    .map(({ article }) => article);
-}
-
 /** Fetch all articles from the Medium RSS feed via rss2json. Never throws — returns [] on any error. */
-export async function getMediumArticles(): Promise<MediumArticle[]> {
+export async function getMediumArticles(): Promise<BlogArticle[]> {
   try {
     const response = await fetch(RSS2JSON_URL, {
       next: { revalidate: 3600 },
@@ -122,17 +71,9 @@ export async function getMediumArticles(): Promise<MediumArticle[]> {
       return [];
     }
 
-    return data.items;
+    return data.items.map(toBlogArticle);
   } catch (error) {
     console.error('Error fetching Medium articles:', error);
     return [];
   }
-}
-
-/** Find a single article by its slug. Returns null if not found or on error. */
-export async function getMediumArticleBySlug(
-  slug: string,
-): Promise<MediumArticle | null> {
-  const articles = await getMediumArticles();
-  return articles.find((a) => extractSlug(a.link) === slug) ?? null;
 }

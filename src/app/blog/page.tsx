@@ -2,7 +2,11 @@ import Container from '@/components/common/Container';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 import { generateMetadata as getMetadata } from '@/config/Meta';
-import { getAllMediumTags, getMediumArticles, toPostPreview } from '@/lib/medium';
+import {
+  getAllArticleTags,
+  getAllArticles,
+  toPostPreview,
+} from '@/lib/articles';
 import { Metadata } from 'next';
 import { Robots } from 'next/dist/lib/metadata/types/metadata-types';
 import { Suspense } from 'react';
@@ -68,9 +72,9 @@ function BlogPageLoading() {
 }
 
 async function BlogPageContent() {
-  const articles = await getMediumArticles();
+  const articles = await getAllArticles();
   const allPosts = articles.map(toPostPreview);
-  const allTags = getAllMediumTags(articles);
+  const allTags = getAllArticleTags(articles);
 
   return <BlogPageClient initialPosts={allPosts} initialTags={allTags} />;
 }

@@ -1,4 +1,4 @@
-import { MediumBlogContent } from '@/components/blog/MediumBlogContent';
+import { ArticleContent } from '@/components/blog/ArticleContent';
 import { BlogList } from '@/components/blog/BlogList';
 import Container from '@/components/common/Container';
 import FontSizeControls from '@/components/common/FontSizeControls';
@@ -7,13 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/Meta';
 import {
-  extractSlug,
-  getMediumArticleBySlug,
-  getMediumArticles,
-  getRelatedMediumArticles,
-  stripHtml,
+  getAllArticles,
+  getArticleBySlug,
+  getRelatedArticles,
   toPostPreview,
-} from '@/lib/medium';
+} from '@/lib/articles';
 import { Metadata } from 'next';
 import { Link } from 'next-view-transitions';
 import { notFound } from 'next/navigation';
@@ -24,12 +22,10 @@ interface BlogPostPageProps {
   }>;
 }
 
-// Pre-generate pages for all Medium articles at build time
+// Pre-generate pages for every Medium and Hashnode article at build time
 export async function generateStaticParams() {
-  const articles = await getMediumArticles();
-  return articles.map((article) => ({
-    slug: extractSlug(article.link),
-  }));
+  const articles = await getAllArticles();
+  return articles.map((article) => ({ slug: article.slug }));
 }
 
 // Generate metadata for each blog post
@@ -37,13 +33,13 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getMediumArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return { title: 'Post Not Found' };
   }
 
-  const description = stripHtml(article.description).substring(0, 160);
+  const { description } = article;
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -52,28 +48,28 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description,
-      images: article.thumbnail ? [article.thumbnail] : [],
+      images: article.coverImage ? [article.coverImage] : [],
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description,
-      images: article.thumbnail ? [article.thumbnail] : [],
+      images: article.coverImage ? [article.coverImage] : [],
     },
   };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const article = await getMediumArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     notFound();
   }
 
-  const allArticles = await getMediumArticles();
-  const relatedArticles = getRelatedMediumArticles(slug, allArticles, 3);
+  const allArticles = await getAllArticles();
+  const relatedArticles = getRelatedArticles(slug, allArticles, 3);
   const relatedPosts = relatedArticles.map(toPostPreview);
 
   return (
@@ -91,7 +87,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Blog Content */}
-          <MediumBlogContent article={article} />
+          <ArticleContent article={article} />
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (

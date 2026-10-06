@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'miro.medium.com',
       },
+      // Hashnode CDN for blog cover images
+      {
+        protocol: 'https',
+        hostname: 'cdn.hashnode.com',
+      },
     ],
   },
 };

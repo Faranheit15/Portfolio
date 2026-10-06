@@ -68,6 +68,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
     "eventsource-parser": "^3.0.6",
+    "fast-xml-parser": "^5.11.2",
     "gray-matter": "^4.0.3",
     "groq-sdk": "^1.1.1",
     "input-otp": "^1.4.2",
