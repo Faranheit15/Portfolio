@@ -1,3 +1,9 @@
+import {
+  HONEYPOT_FIELD,
+  MIN_MESSAGE_WORDS,
+  countWords,
+  getSpamReasons,
+} from '@/lib/contact-spam';
 import { NextRequest, NextResponse } from 'next/server';
 import * as z from 'zod';
 
@@ -10,8 +16,23 @@ const contactSchema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email(),
   phone: z.string().min(10).max(20),
-  message: z.string().min(10).max(1000),
+  message: z
+    .string()
+    .min(10)
+    .max(1000)
+    .refine((message) => countWords(message) >= MIN_MESSAGE_WORDS, {
+      message: `Message must contain at least ${MIN_MESSAGE_WORDS} words.`,
+    }),
+  [HONEYPOT_FIELD]: z.string().optional(),
+  fillTimeMs: z.number().nonnegative().optional(),
 });
+
+interface ContactData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
 function getClientIP(request: NextRequest): string {
   // Get IP from various headers in order of preference
@@ -62,50 +83,7 @@ function checkRateLimit(clientIP: string): {
   };
 }
 
-async function submitToNetlify(data: {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}): Promise<void> {
-  const siteUrl = process.env.NEXT_PUBLIC_URL;
-
-  if (!siteUrl) {
-    console.warn(
-      'NEXT_PUBLIC_URL not configured, skipping Netlify Forms submission',
-    );
-    return;
-  }
-
-  const body = new URLSearchParams({
-    'form-name': 'contact',
-    name: data.name,
-    email: data.email,
-    phone: data.phone,
-    message: data.message,
-  });
-
-  const response = await fetch(`${siteUrl}/__forms.html`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: body.toString(),
-  });
-
-  if (!response.ok) {
-    throw new Error(
-      `Netlify Forms submission failed with status ${response.status}`,
-    );
-  }
-}
-
-async function sendToTelegram(data: {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}): Promise<boolean> {
+async function sendToTelegram(data: ContactData): Promise<boolean> {
   const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
   const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -184,7 +162,35 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const validatedData = contactSchema.parse(body);
+    const {
+      [HONEYPOT_FIELD]: honeypot,
+      fillTimeMs,
+      ...validatedData
+    } = contactSchema.parse(body);
+
+    const spamReasons = getSpamReasons({
+      email: validatedData.email,
+      message: validatedData.message,
+      honeypot,
+      fillTimeMs,
+    });
+
+    if (spamReasons.length > 0) {
+      // Skip Telegram. Submissions made through the real form are still
+      // archived in Netlify Forms by the browser, so a false positive can be
+      // recovered there. Answer exactly like a real success so bots get no
+      // signal to adapt to.
+      console.warn('Contact submission flagged as spam:', spamReasons);
+      return NextResponse.json(
+        { message: 'Message sent successfully!', success: true },
+        {
+          headers: {
+            'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS.toString(),
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+          },
+        },
+      );
+    }
 
     const telegramSent = await sendToTelegram(validatedData);
 
@@ -194,11 +200,6 @@ export async function POST(request: NextRequest) {
         { status: 500 },
       );
     }
-
-    // Fire-and-forget: store submission in Netlify Forms (non-blocking)
-    submitToNetlify(validatedData).catch((err) => {
-      console.error('Netlify Forms submission error:', err);
-    });
 
     return NextResponse.json(
       {
