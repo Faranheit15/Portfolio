@@ -1,13 +1,10 @@
+import Gamepad from '@/components/svgs/devices/Gamepad';
 import Headphones from '@/components/svgs/devices/Headphones';
 import Keyboard from '@/components/svgs/devices/Keyboard';
 import Laptop from '@/components/svgs/devices/Laptop';
 import Monitor from '@/components/svgs/devices/Monitor';
 import Mouse from '@/components/svgs/devices/Mouse';
 import Phone from '@/components/svgs/devices/Phone';
-
-
-
-
 
 export const devices = [
   {
@@ -31,11 +28,19 @@ export const devices = [
     icon: <Keyboard className="size-4" />,
   },
   {
+    name: 'Aula F87 TKL Mechanical Keyboard',
+    icon: <Keyboard className="size-4" />,
+  },
+  {
     name: 'Razer Viper Mini Extralight Gaming Mouse',
     icon: <Mouse className="size-4" />,
   },
   {
     name: 'Portronics Toad Ergo Vertical Vertical Mouse',
+    icon: <Mouse className="size-4" />,
+  },
+  {
+    name: 'Amkette Flow 2 XS Mouse',
     icon: <Mouse className="size-4" />,
   },
   {
@@ -45,6 +50,10 @@ export const devices = [
   {
     name: 'RedGear Cosmo 7.1 Wired Gaming Headphones',
     icon: <Headphones className="size-4" />,
+  },
+  {
+    name: 'EvoFox Elite X2 Gamepad Controller',
+    icon: <Gamepad className="size-4" />,
   },
   {
     name: 'Apple iPhone 17 (256 GB)',
