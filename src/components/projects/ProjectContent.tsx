@@ -5,27 +5,28 @@ import { ProjectCaseStudyFrontmatter } from '@/types/project';
 import rehypeHighlight from '@shikijs/rehype';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Link } from 'next-view-transitions';
-import Image from 'next/image';
 
 import Github from '../svgs/Github';
 import Website from '../svgs/Website';
 import { ProjectComponents } from './ProjectComponents';
+import { ProjectPreview } from './ProjectPreview';
 
 interface ProjectContentProps {
   frontmatter: ProjectCaseStudyFrontmatter;
   content: string;
   contentSource: 'mdx' | 'github-readme';
+  embedUrl: string | null;
 }
 
 export function ProjectContent({
   frontmatter,
   content,
   contentSource,
+  embedUrl,
 }: ProjectContentProps) {
   const {
     title,
     description,
-    image,
     technologies,
     github,
     live,
@@ -49,13 +50,7 @@ export function ProjectContent({
       {/* Hero Section */}
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video overflow-hidden rounded-lg">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-            priority
-          />
+          <ProjectPreview title={title} embedUrl={embedUrl} />
         </div>
 
         <div className="space-y-4">
@@ -210,7 +205,7 @@ export function ProjectContent({
 
       {/* Content */}
       {contentSource === 'github-readme' && (
-        <div className="mb-4 flex items-center gap-2 text-xs text-muted-foreground">
+        <div className="text-muted-foreground mb-4 flex items-center gap-2 text-xs">
           <Github className="size-3" />
           <span>Content sourced from GitHub README</span>
         </div>

@@ -9,33 +9,12 @@ import { BlogPostPreview } from '@/types/blog';
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 
+import { TitleGradient } from '../common/TitleGradient';
 import ArrowRight from '../svgs/ArrowRight';
 import Calender from '../svgs/Calender';
 
 interface BlogCardProps {
   post: BlogPostPreview;
-}
-
-// Deterministic gradient picked from the article title so each card always
-// gets the same colours across renders and page loads.
-const GRADIENTS = [
-  'from-violet-600 via-purple-600 to-indigo-700',
-  'from-blue-600 via-cyan-500 to-teal-600',
-  'from-emerald-500 via-teal-500 to-cyan-600',
-  'from-rose-500 via-pink-500 to-fuchsia-600',
-  'from-amber-500 via-orange-500 to-red-600',
-  'from-indigo-600 via-blue-500 to-sky-600',
-  'from-fuchsia-600 via-violet-500 to-purple-700',
-  'from-teal-500 via-emerald-500 to-green-600',
-] as const;
-
-function gradientForTitle(title: string): string {
-  let hash = 0;
-  for (let i = 0; i < title.length; i++) {
-    hash = (hash << 5) - hash + title.charCodeAt(i);
-    hash |= 0; // convert to 32-bit int
-  }
-  return GRADIENTS[Math.abs(hash) % GRADIENTS.length];
 }
 
 export function BlogCard({ post }: BlogCardProps) {
@@ -48,8 +27,6 @@ export function BlogCard({ post }: BlogCardProps) {
     day: 'numeric',
   });
 
-  const gradient = gradientForTitle(title);
-
   return (
     <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all dark:border-gray-800">
       <CardHeader className="p-0">
@@ -58,14 +35,7 @@ export function BlogCard({ post }: BlogCardProps) {
             {image ? (
               <Image src={image} alt={title} fill className="object-cover" />
             ) : (
-              <div
-                className={`bg-gradient-to-br ${gradient} flex h-full w-full items-center justify-center`}
-              >
-                {/* First letter of the title as a subtle visual anchor */}
-                <span className="select-none text-7xl font-black text-white/20">
-                  {title.charAt(0).toUpperCase()}
-                </span>
-              </div>
+              <TitleGradient title={title} />
             )}
           </Link>
         </div>

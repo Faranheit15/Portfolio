@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/Meta';
 import { projects } from '@/config/Projects';
+import { getEmbeddableUrl } from '@/lib/live-preview';
 import {
   getProjectCaseStudy,
   getProjectCaseStudySlugs,
@@ -79,6 +80,7 @@ export default async function ProjectCaseStudyPage({
 
   const navigation = await getProjectNavigation(slug);
   const relatedProjects = await getRelatedProjectCaseStudies(slug, 2);
+  const embedUrl = await getEmbeddableUrl(caseStudy.frontmatter.live);
 
   return (
     <Container className="py-16">
@@ -98,6 +100,7 @@ export default async function ProjectCaseStudyPage({
           frontmatter={caseStudy.frontmatter}
           content={caseStudy.content}
           contentSource={caseStudy.contentSource}
+          embedUrl={embedUrl}
         />
 
         {/* Project Navigation */}

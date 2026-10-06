@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/dialog';
 import { type Project } from '@/types/project';
 import { Link } from 'next-view-transitions';
-import Image from 'next/image';
 import React, { useState } from 'react';
 
 import ArrowRight from '../svgs/ArrowRight';
@@ -22,25 +21,21 @@ import Github from '../svgs/Github';
 import PlayCircle from '../svgs/PlayCircle';
 import Website from '../svgs/Website';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { ProjectPreview } from './ProjectPreview';
 
 interface ProjectCardProps {
   project: Project;
+  embedUrl: string | null;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, embedUrl }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   return (
     <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all dark:border-gray-800">
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden">
-          <Image
-            className="h-full w-full object-cover"
-            src={project.image}
-            alt={project.title}
-            width={1920}
-            height={1080}
-          />
+          <ProjectPreview title={project.title} embedUrl={embedUrl} />
           {project.video && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
