@@ -33,7 +33,7 @@ export default function GearsPage() {
             Gears
           </h1>
           <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            My gears and tools i use to get my work done.
+            The gears and tools that I use to get my work done.
           </p>
         </div>
         <Separator />

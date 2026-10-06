@@ -134,7 +134,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/gears': {
     title: 'Gears - My Setup & Tools',
     description:
-      'Discover the tools, devices, and software I use to get my work done efficiently.',
+      'Discover the tools, devices, and software that I use to get my work done efficiently.',
     keywords: [
       'setup',
       'tools',
